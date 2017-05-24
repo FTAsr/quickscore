@@ -16,26 +16,26 @@ In order to use the implemented supervised evaluation framework, you need to lea
     
     ensemble = list()
     
-    ## Bow model requires the path to a pre-trained word2vect or GloVe vector space in binary format
+    
     ensemble.append(models.bow("../pretrained/word2vec/small.bin"))
     
-    ## FeatureBased model is standalone and does not need any pre-trained or external resource
+    
     ensemble.append(models.featureBased())
     
  2) training the scorer on some labeled data: for this you need to have training, development and test data in separate files, or all in one file ready for random split. See the following example for reading SICK dataset composed of three separate files. 
  
-    ## Load some data for training (standard SICK dataset)
+   
     trainSet, devSet, testSet = load_data_SICK('../data/SICK/')
     
-    ## Train a classifier using train and development subsets
+    
     classifier = train(ensemble, trainSet, devSet)
     
  3) test the scorer on same type or different type of data: once you have a trained classifier you could use it on the test portion of your data, or data of different type. Examples of using a trained classifier on SICK data to evaluate similarity scores for college students' and school kids' data are below:
  
-    ## Test the classifier on test data of the same type (coming from SICK)
+    
     test(ensemble, classifier, testSet).to_csv('../data/local/SICK-trained_SICK-test.csv')
     
-    ## Now we can also test the classifier on a new type of data to see how it generalizes
+    
     x, y, testSet = load_data('../data/local/CollegeOldData_HighAgreementPartialScoring.txt')
     test(ensemble, newClassifier,testSet).to_csv('../data/local/SICK-trained_College-test.csv')
     
@@ -47,14 +47,14 @@ In order to use the implemented supervised evaluation framework, you need to lea
     
  4) saving the classifier for future use: since traning the classifier takes some time, you should know how to save and load it for future use (this is very important in online application of the system). Always do a checksome after loading a classifier to make sure it has been read correctly from the disk
  
-    ## FileName to save the trained classifier for later use
+    
     fileName = '../pretrained/SICK-Classifier.h5'
     
-    ## SAVE / LOAD 
+    
     classifier.save(fileName)
     newClassifier = load_model(fileName)
     
-    ## Test the saved and loaded classifier on the testSet again (to make sure the classifier didn't mess up by saving on disk)
+    
     test(ensemble, newClassifier, testSet)
     
  
