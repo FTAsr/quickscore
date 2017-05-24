@@ -1,4 +1,4 @@
-### Instructions to use the Modular library for short answer scoring
+# Instructions to use the Modular library for short answer scoring
 
 This library makes it possible for several programmers to work on the same code. The interface of the short answer scoring systems is user friendly and a quick start to train and test a model would be to look at the main function implemented in file supervisedEval/main.py. However, to get a better understanding of the implemented models please study the following information.
 
