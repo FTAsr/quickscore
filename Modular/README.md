@@ -57,6 +57,8 @@ In order to use the implemented supervised evaluation framework, you need to lea
     
     test(ensemble, newClassifier, testSet)
     
+## Data format
+Data files should be tab delimitted text files (.txt); sample data can be found in data/SICK directory. The first line of an input data file consists of the column names (goldAnswer, teacherAnswer, similarityScore) and other lines each demonstrtes one datapoint. If you want to read train, development and test data from separate files (SICK format), you can put them in one category and call the function load_data_SICk(). Otherwise, train/dev/test data can be randomly chosen from a single input file by load_data() with a pre-specified split function.
  
 
     
