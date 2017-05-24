@@ -12,7 +12,7 @@ In supervised evaluation, we need labeled data (sentence pairs and their similar
 
 In order to use the implemented supervised evaluation framework, you need to learn about 4 main functions:
 
-1) setting up the scorer model(s): this is done by making a list of models (which we call ensemble) and passing each model the initialization parameters/input. For bow model, the only required input is a vector space file in binary format. The quickScore and featureBased models do not have any input parameter.
+1) setting up the scorer model(s): this is done by making a list of models (which we call ensemble) and passing each model the initialization parameters/input. For bow model, the only required input is a vector space file in binary format. The quickScore and featureBased models do not have any input parameter:
     
     ensemble = list()
     
@@ -22,7 +22,7 @@ In order to use the implemented supervised evaluation framework, you need to lea
     
     ensemble.append(models.featureBased())
     
- 2) training the scorer on some labeled data: for this you need to have training, development and test data in separate files, or all in one file ready for random split. See the following example for reading SICK dataset composed of three separate files. 
+ 2) training the scorer on some labeled data: for this you need to have training, development and test data in separate files, or all in one file ready for random split. See the following example for reading SICK dataset composed of three separate files:
  
    
     trainSet, devSet, testSet = load_data_SICK('../data/SICK/')
@@ -45,7 +45,7 @@ In order to use the implemented supervised evaluation framework, you need to lea
     x, y, testSet = load_data('../data/local/IES-2Exp2A_AVG.txt')
     test(ensemble, newClassifier,testSet).to_csv('../data/local/SICK-trained_Exp2A-test.csv')
     
- 4) saving the classifier for future use: since traning the classifier takes some time, you should know how to save and load it for future use (this is very important in online application of the system). Always do a checksome after loading a classifier to make sure it has been read correctly from the disk
+ 4) saving the classifier for future use: since traning the classifier takes some time, you should know how to save and load it for future use (this is very important in online application of the system). Always do a checksome after loading a classifier to make sure it has been read correctly from the disk:
  
     
     fileName = '../pretrained/SICK-Classifier.h5'
